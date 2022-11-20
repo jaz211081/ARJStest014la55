@@ -1,82 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
-   
-        <style>
-            nav ul{ /*導覽列-項目設定*/
-                list-style-type: none; /*除去項目符號*/
-                display: inline-flex; /*橫向排列*/
-                margin: 0px;
-                }
-            nav li{ /*導覽列-細項設定*/
-                padding: 0.8vw; /*文字水平間距*/
-            }
-            nav {
-                position: fixed;
-                left: 20px;
-                top: 20px;
-                z-index: 100;
-            }
-        </style>
+  <head>
+    <style>
+      nav ul {
+        /*導覽列-項目設定*/
+        list-style-type: none; /*除去項目符號*/
+        display: inline-flex; /*橫向排列*/
+        margin: 0px;
+      }
+      nav li {
+        /*導覽列-細項設定*/
+        padding: 0.8vw; /*文字水平間距*/
+      }
+      nav {
+        position: fixed;
+        left: 20px;
+        top: 20px;
+        z-index: 100;
+      }
+      .ariframe {
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
+      .ar {
+        height: 500px;
+        width: 500px;
+      }
+      #frame {
+        width: 300px;
+        height: 200px;
+        resize: both;
+      }
+    </style>
+  </head>
 
-    </head>
+  <nav>
+    <ul>
+      <li><a href="https://www.google.com/">首頁</a></li>
+      <li><a href="#">關於我們</a></li>
+      <li><a href="#">產品</a></li>
+      <li><a href="#">服務</a></li>
+      <li><a href="#">新聞</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <ul>
-            <li><a href="https://www.google.com/">首頁</a></li>
-            <li><a href="#">關於我們</a></li>
-            <li><a href="#">產品</a></li>
-            <li><a href="#">服務</a></li>
-            <li><a href="#">新聞</a></li>
-        </ul>
-    </nav>
-
-    <body style="margin: 0; overflow: hidden;">
-        
-        
-        
-        <a-scene
-            vr-mode-ui="enabled: false;"
-            loading-screen="enabled: false;"
-            renderer="logarithmicDepthBuffer: true;"
-            arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
-            id="scene"
-            embedded
-            gesture-detector
-        >
-            <a-assets>
-                <a-asset-item
-                    id="animated-asset"
-                    src="assets/Stage.glb"
-                ></a-asset-item>
-            </a-assets>
-
-            <a-marker
-                id="animated-marker"
-                type="pattern"
-                preset="custom"
-                url="assets/marker.patt"
-                raycaster="objects: .clickable"
-                emitevents="true"
-                cursor="fuse: false; rayOrigin: mouse;"
-                id="markerA"
-            >
-                <a-entity
-                    id="bowser-model"
-                    scale="0.6247042791253827 0.6247042791253827 0.6247042791253827"
-                    animation-mixer="loop: repeat"
-                    gltf-model="#animated-asset"
-                    class="clickable"
-                    gesture-handler
-                ></a-entity>
-            </a-marker>
-
-            <a-entity camera></a-entity>
-        </a-scene>
-    </body>
+  <body style="margin: 0; overflow: hidden; height: 100vh">
+    <div class="ariframe">
+      <iframe
+        height="100%"
+        width="100%"
+        src="ar.html"
+        frameborder="0"
+        scrolling="no"
+        id="frame"
+      ></iframe>
+    </div>
+  </body>
 </html>
